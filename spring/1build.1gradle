@@ -1,0 +1,67 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.7'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.prep'
+version = '0.0.1-SNAPSHOT'
+
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation "org.springframework.boot:spring-boot-starter-security"
+	implementation "com.fasterxml.jackson.core:jackson-core:2.14.2"
+	implementation "com.fasterxml.jackson.core:jackson-databind:2.15.1"
+	implementation "commons-io:commons-io:2.11.0"
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0' // Use the latest stable version
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0' // For running tests
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+//	testImplementation 'org.testcontainers:junit-jupiter'
+//	testImplementation 'org.testcontainers:testcontainers'
+//	testImplementation 'org.testcontainers:mysql'
+//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+//	testImplementation 'org.springframework.security:spring-security-test'
+////	testImplementation 'org.testcontainers:testcontainers:1.15.3' // or newer
+////	testImplementation 'org.testcontainers:mysql:1.19.0'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-web'
+//	testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0' // or latest version
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:mysql'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+
+
+//		testImplementation platform('org.junit:junit-bom:5.10.0')
+//		testImplementation 'org.junit.jupiter:junit-jupiter'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

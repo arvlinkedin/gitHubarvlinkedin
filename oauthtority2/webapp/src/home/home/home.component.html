@@ -1,0 +1,33 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" formControlName="name"/>
+  <label for="email">Email:</label> 
+<div>
+  <!-- <input type="email" id="email" #emailField="ngModel" [(ngModel)]="userEmail" name="emailField"> -->
+  <input type="email" id="email" formControlName="emailField" />
+  <div *ngIf="emailField.invalid && emailField.touched">
+    <div *ngIf="emailField.errors?.['required']">Email is required.</div>
+    <div *ngIf="emailField.errors?.['email']">Invalid email format.</div>
+  </div>
+</div>
+  <button type="submit" [disabled]="myForm.invalid">Submit</button>
+</form>
+
+
+<!-- <div>
+  <h2>Fullstack OAuth2 Keycloak</h2>
+</div>
+<div>
+  <div>
+    <button (click)="getChartQuantity()">Update Chart Quantity</button>
+  </div>
+  <div>
+    <button (click)="getHelloText()">GET HELLO TEXT</button>
+  </div>
+  <div>
+    <button (click)="logout()">LOGOUT</button>
+  </div>
+</div>
+<div>
+  {{ helloText }}
+</div> -->

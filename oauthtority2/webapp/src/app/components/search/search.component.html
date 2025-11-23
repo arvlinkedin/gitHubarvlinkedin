@@ -1,0 +1,19 @@
+<form class="form-header">
+  <input
+    #searchInput
+    class="au-input au-input-xl"
+    type="text"
+    placeholder="Search for products ..."
+    (keyup.enter)="doSearch(searchInput.value)"
+  />
+  <button
+    type="button"
+    class="au-btn-submit"
+    (click)="doSearch(searchInput.value)"
+    aria-label="Search"
+  >
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <span class="sr-only">Search</span>
+  </button>
+</form>
+

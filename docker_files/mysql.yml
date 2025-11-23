@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: strong_password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_db_data_1:/datavol
+      - ./mysql-config:/etc/mysql/conf.d
+volumes:
+  mysql_db_data_1:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: c:/gitHubRepo/docker_files/mysql_db_data
